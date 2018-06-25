@@ -1,20 +1,17 @@
-//All the DOM Declarations 
+//All my DOM Goodies
 const button = document.querySelector('#firstButton')
 const faveButton = document.querySelector('#faveButton')
 const h1 = document.querySelector('#MEN')
 const faveText =document.querySelector('#faveForm')
 
-
-//For the Vanilla HW/Bonus
+//for the first two parts
 const changeHeader = function() {
    
     h1.textContent='It\'s raining Chris!'
 }
-
 button.addEventListener('click', changeHeader)
 
-//For the Super Mega BC
-
+//Super Mega Bonus Credit
 faveButton.addEventListener('click',Faveomatic)
 function Faveomatic() {
     var x = document.getElementById("faveForm");
@@ -26,15 +23,11 @@ function Faveomatic() {
     h1.textContent=faveOutput
 }
 
-//For the Hyper Fighting
-
+//Super Mega Bonus Credit Hyper Fighting
 faveText.addEventListener('keypress', 
-function(event){
-    event.preventDefault();
+function(event){  
 if (event.keyCode===13)
 {
+    event.preventDefault();
    faveButton.click();
 }});
-
-
-
