@@ -13,13 +13,17 @@ button.addEventListener('click', changeHeader)
 
 //Super Mega Bonus Credit
 faveButton.addEventListener('click',Faveomatic)
+
 function Faveomatic() {
+    
+    event.preventDefault();
     var x = document.getElementById("faveForm");
     var faveOutput = "";
     var i;
     for (i = 0; i < x.length ;i++) {
         faveOutput += x.elements[i].value;
     }
+    faveOutput=faveOutput.slice(0,-11)
     h1.textContent=faveOutput
 }
 
