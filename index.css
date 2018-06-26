@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 @import url('https://fonts.googleapis.com/css?family=Shrikhand');
-
+@import url('https://fonts.googleapis.com/css?family=Eater');
 body {
     font-family: 'Shrikhand', 'Lato', Arial, Helvetica, sans-serif;
 }
@@ -21,3 +21,14 @@ input[type=number] {
 ul {
     list-style-type: none;
   }
+
+div {
+    font-family: 'Eater','Shrikhand', 'Lato';
+   
+}
+
+h1{
+    border-style: dashed;
+    box-sizing: border-box;
+    border: 2px solid rgb(233, 250, 1);
+}
