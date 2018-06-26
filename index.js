@@ -2,7 +2,7 @@ const form = document.querySelector('form#flickForm')
 
 
 
-const changeHeading = function(ev) {
+const listAdder9000 = function(ev) {
   ev.preventDefault()
   const f = ev.target
 
@@ -16,4 +16,4 @@ const changeHeading = function(ev) {
    f.reset()
 }
 
-form.addEventListener('submit', changeHeading)
+form.addEventListener('submit', listAdder9000)
