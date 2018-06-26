@@ -11,6 +11,13 @@ input[type=text] {
     border-radius: 4px;
 }
 
+input[type=text]:focus { 
+    background-color: red;
+}
+
+input[type=number]:focus { 
+    border: 2px solid red;
+}
 
 input[type=number] {
 

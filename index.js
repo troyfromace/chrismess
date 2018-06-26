@@ -18,7 +18,6 @@ function chrisCountOMatic(f){
 const formSubmiter9000 = function(ev) {
   ev.preventDefault()
   const f = ev.target
-
   listOtron57(f);
   chrisCountOMatic(f);
    f.reset()
