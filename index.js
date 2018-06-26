@@ -8,7 +8,10 @@ const changeHeading = function(ev) {
 
   const flickName=f.flickName.value
   const list = document.querySelector('#flicks')
-   list.innerHTML += `<li>${flickName}</li>`
+  let item=document.createElement('li')
+
+  item.textContent=flickName
+  list.appendChild(item)
    
    f.reset()
 }
