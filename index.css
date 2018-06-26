@@ -13,10 +13,11 @@ input[type=text] {
 
 input[type=text]:focus { 
     background-color: red;
+    color: rgb(255,255,255)
 }
 
 input[type=number]:focus { 
-    border: 2px solid red;
+    border: 8px solid red;
 }
 
 input[type=number] {
