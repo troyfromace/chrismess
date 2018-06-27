@@ -22,7 +22,6 @@ class App{
         deleteClass='.'+deleteClass
         let chopNumber=deleteClass.slice(7)
         chopNumber=Number(chopNumber)
-        console.log(chopArray)
         debugger
         let choppity=chopArray.lastIndexOf(chopNumber)
         debugger
@@ -33,7 +32,6 @@ class App{
         const deleteItem=document.querySelector(deleteClass)
         const list=document.querySelector('#flicks')
         list.removeChild(deleteItem)
-        console.log(filmArray)
       })
       }
 
