@@ -11,10 +11,15 @@ function listOtron57(f) {
   nameSpan.classList.add('name')
   let countSpan = document.createElement('span')
   countSpan.classList.add('count')
+  if(f.flickName.value!="")
   nameSpan.textContent=`"${f.flickName.value}"`
+  else
+  nameSpan.textContent='-'
   if(f.ChrisCount.value==="1")
   countSpan.textContent=`${f.ChrisCount.value} Chriss`
   else countSpan.textContent=`${f.ChrisCount.value} Chrisses`
+  if(f.ChrisCount.value==="")
+  countSpan.textContent='-'
   item.appendChild(nameSpan)
   item.appendChild(countSpan)
   list.appendChild(item)
