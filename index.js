@@ -1,4 +1,5 @@
 var ChrisStorm=0;
+const filmArray=[];
 class App{
   constructor() {
     const form = document.querySelector('form#flickForm')
@@ -49,7 +50,8 @@ handleSubmit(ev,ChrisStorm) {
     name: f.flickName.value,
     count: f.ChrisCount.value,
   }
-
+  filmArray.push(flick);
+  console.log(filmArray);
   const item = this.renderItem(flick)
 
   const list = document.querySelector('#flicks')
