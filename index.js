@@ -44,22 +44,17 @@ class App{
         faveClass='.'+faveClass
         const faveItem=document.querySelector(faveClass)
         faveItem.classList.add("SUPERLOVE")
-        
+
+        let faveArraySpot=faveClass.slice(5)
+        faveArraySpot=Number(faveArraySpot)
+        let abc=chopArray.lastIndexOf(faveArraySpot)
+        filmArray[abc].fave="LOVE IT"
+        console.log(filmArray)
       })
       }
 
-
-
-
-
-
-
-
       })
-    
-   
-    
-    
+ 
   }
 
 
