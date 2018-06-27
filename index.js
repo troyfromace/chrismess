@@ -22,13 +22,9 @@ class App{
         deleteClass='.'+deleteClass
         let chopNumber=deleteClass.slice(7)
         chopNumber=Number(chopNumber)
-        debugger
         let choppity=chopArray.lastIndexOf(chopNumber)
-        debugger
         filmArray.splice(choppity,1)
-        debugger
         chopArray.splice(choppity,1)
-        debugger
         const deleteItem=document.querySelector(deleteClass)
         const list=document.querySelector('#flicks')
         list.removeChild(deleteItem)
@@ -79,6 +75,12 @@ renderItem(flick) {
   item.classList.add(`delete${listCount}`)
   chopArray.push(listCount)
   /////////////////////
+  const faveButton=document.createElement('button')
+  faveButton.classList.add('fave')
+  faveButton.classList.add(`fave${listCount}`)
+  faveButton.textContent=`<3 ${flick.name}`
+  item.classList.add(`fave${listCount}`)
+  item.appendChild(faveButton)
   return item
 }
 
