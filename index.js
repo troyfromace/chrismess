@@ -1,5 +1,6 @@
 var ChrisStorm=0;
 const filmArray=[];
+var chopArray=[];
 var listCount=0;
 class App{
   constructor() {
@@ -17,13 +18,22 @@ class App{
          const d= ev.target
         console.log(d.getAttribute('class'))
         let deleteClass=d.getAttribute('class')
-        debugger
         deleteClass=deleteClass.slice(7)
         deleteClass='.'+deleteClass
+        let chopNumber=deleteClass.slice(7)
+        chopNumber=Number(chopNumber)
+        console.log(chopArray)
+        debugger
+        let choppity=chopArray.lastIndexOf(chopNumber)
+        debugger
+        filmArray.splice(choppity,1)
+        debugger
+        chopArray.splice(choppity,1)
+        debugger
         const deleteItem=document.querySelector(deleteClass)
         const list=document.querySelector('#flicks')
-        debugger
         list.removeChild(deleteItem)
+        console.log(filmArray)
       })
       }
 
@@ -62,13 +72,15 @@ renderItem(flick) {
     const span = this.renderProperty(propertyName, flick[propertyName])
     item.appendChild(span)
   })
-
+/////////////////////
   const button=document.createElement('button')
   button.classList.add('delete')
   button.classList.add(`delete${++listCount}`)
   button.textContent=`DELETE ${flick.name}`
   item.appendChild(button)
   item.classList.add(`delete${listCount}`)
+  chopArray.push(listCount)
+  /////////////////////
   return item
 }
 
@@ -79,7 +91,7 @@ handleSubmit(ev,ChrisStorm) {
   const flick = {
     name: f.flickName.value,
     count: f.ChrisCount.value,
-    delete: '',
+    fave: '',
   }
   filmArray.push(flick);
   console.log(filmArray);
