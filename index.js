@@ -1,5 +1,6 @@
 var ChrisStorm=0;
 const filmArray=[];
+var listCount=0;
 class App{
   constructor() {
     const form = document.querySelector('form#flickForm')
@@ -7,7 +8,27 @@ class App{
       ev.preventDefault()
       
       this.handleSubmit(ev,ChrisStorm)
-    })
+
+      if(listCount===0){}
+      else {
+        debugger
+        const deleteButton=document.querySelector(`.delete${listCount}`)
+        debugger
+        deleteButton.addEventListener('click', (ev)=>{
+          ev.preventDefault()
+          debugger
+        const deleteItem=document.querySelector(`.listitem${listCount}`)
+        const list=document.querySelector('#flicks')
+        list.removeChild(deleteItem)
+      })
+      }
+
+
+      })
+    
+   
+    
+    
   }
 
 
@@ -38,9 +59,14 @@ renderItem(flick) {
     item.appendChild(span)
   })
 
+  const button=document.createElement('button')
+  button.classList.add('delete')
+  button.classList.add(`delete${++listCount}`)
+  button.textContent=`DELETE ${flick.name}`
+  item.appendChild(button)
+  item.classList.add(`listitem${listCount}`)
   return item
 }
-
 
 
 handleSubmit(ev,ChrisStorm) {
@@ -49,6 +75,7 @@ handleSubmit(ev,ChrisStorm) {
   const flick = {
     name: f.flickName.value,
     count: f.ChrisCount.value,
+    delete: '',
   }
   filmArray.push(flick);
   console.log(filmArray);
