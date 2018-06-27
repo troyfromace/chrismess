@@ -32,6 +32,29 @@ class App{
       }
 
 
+      if(listCount===0){}
+      else {
+        const faveButton=document.querySelector(`button.fave${listCount}`)
+        faveButton.addEventListener('click', (ev)=>{
+          ev.preventDefault()
+         const l= ev.target
+        console.log(l.getAttribute('class'))
+        let faveClass=l.getAttribute('class')
+        faveClass=faveClass.slice(5)
+        faveClass='.'+faveClass
+        const faveItem=document.querySelector(faveClass)
+        faveItem.classList.add("SUPERLOVE")
+        
+      })
+      }
+
+
+
+
+
+
+
+
       })
     
    
