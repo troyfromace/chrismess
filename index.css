@@ -23,7 +23,9 @@ input:focus {
 }
 
 
-
+.count{
+    display: block;  
+}
 
 ul {
     list-style-type: none;
