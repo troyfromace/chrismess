@@ -1,14 +1,29 @@
-const form = document.querySelector('form#flickForm')
-const Display = document.querySelector('#ChrisCountDisplay')
-var ChrisStorm = 0
+var ChrisStorm=0;
+class App{
+  constructor() {
+    const form = document.querySelector('form#flickForm')
+    form.addEventListener('submit', (ev)=>{
+      ev.preventDefault()
+      
+      this.handleSubmit(ev,ChrisStorm)
+    })
+  }
 
 
-function chrisCountOMatic(f){
+chrisCountOMatic(f,ChrisStorm){
   ChrisStorm += Number(f.ChrisCount.value)
-  Display.textContent="CHRIS COUNT :  "+ChrisStorm
+  document.querySelector('#ChrisCountDisplay').textContent="CHRIS COUNT :  "+ChrisStorm
+  return ChrisStorm
 }
 
-const renderItem = function(flick) {
+renderProperty(name, value) {
+  const span = document.createElement('span')
+  span.classList.add(name)
+  span.textContent = value
+  return span
+}
+
+renderItem(flick) {
   const item = document.createElement('li')
   item.classList.add('flick')
 
@@ -16,24 +31,18 @@ const renderItem = function(flick) {
   const properties = Object.keys(flick)
 
   // loop over the properties
-  properties.forEach(function(propertyName) {
+  properties.forEach((propertyName) => {
     // build a span, and append it to the list
-    const span = renderProperty(propertyName, flick[propertyName])
+    const span = this.renderProperty(propertyName, flick[propertyName])
     item.appendChild(span)
   })
 
   return item
 }
 
-const renderProperty = function(name, value) {
-  const span = document.createElement('span')
-  span.classList.add(name)
-  span.textContent = value
-  return span
-}
 
-const handleSubmit = function(ev) {
-  ev.preventDefault()
+
+handleSubmit(ev,ChrisStorm) {
   const f = ev.target
 
   const flick = {
@@ -41,14 +50,16 @@ const handleSubmit = function(ev) {
     count: f.ChrisCount.value,
   }
 
-  const item = renderItem(flick)
+  const item = this.renderItem(flick)
 
   const list = document.querySelector('#flicks')
   list.appendChild(item)
 
-  chrisCountOMatic(f)
-  
+  this.chrisCountOMatic(f,ChrisStorm)
+
   f.reset()
 }
 
-form.addEventListener('submit', handleSubmit)
+}
+
+const app = new App()
