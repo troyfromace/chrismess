@@ -11,14 +11,18 @@ class App{
 
       if(listCount===0){}
       else {
-        debugger
-        const deleteButton=document.querySelector(`.delete${listCount}`)
-        debugger
+        const deleteButton=document.querySelector(`button.delete${listCount}`)
         deleteButton.addEventListener('click', (ev)=>{
           ev.preventDefault()
-          debugger
-        const deleteItem=document.querySelector(`.listitem${listCount}`)
+         const d= ev.target
+        console.log(d.getAttribute('class'))
+        let deleteClass=d.getAttribute('class')
+        debugger
+        deleteClass=deleteClass.slice(7)
+        deleteClass='.'+deleteClass
+        const deleteItem=document.querySelector(deleteClass)
         const list=document.querySelector('#flicks')
+        debugger
         list.removeChild(deleteItem)
       })
       }
@@ -64,7 +68,7 @@ renderItem(flick) {
   button.classList.add(`delete${++listCount}`)
   button.textContent=`DELETE ${flick.name}`
   item.appendChild(button)
-  item.classList.add(`listitem${listCount}`)
+  item.classList.add(`delete${listCount}`)
   return item
 }
 
