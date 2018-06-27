@@ -2,40 +2,53 @@ const form = document.querySelector('form#flickForm')
 const Display = document.querySelector('#ChrisCountDisplay')
 var ChrisStorm = 0
 
-function listOtron57(f) {
-  
-  const list = document.querySelector('#flicks')
-  let item=document.createElement('li')
-  item.classList.add('flick');
-  let nameSpan = document.createElement('span')
-  nameSpan.classList.add('name')
-  let countSpan = document.createElement('span')
-  countSpan.classList.add('count')
-  if(f.flickName.value!="")
-  nameSpan.textContent=`"${f.flickName.value}"`
-  else
-  nameSpan.textContent='-'
-  if(f.ChrisCount.value==="1")
-  countSpan.textContent=`${f.ChrisCount.value} Chriss`
-  else countSpan.textContent=`${f.ChrisCount.value} Chrisses`
-  if(f.ChrisCount.value==="")
-  countSpan.textContent='-'
-  item.appendChild(nameSpan)
-  item.appendChild(countSpan)
-  list.appendChild(item)
-}
 
 function chrisCountOMatic(f){
   ChrisStorm += Number(f.ChrisCount.value)
   Display.textContent="CHRIS COUNT :  "+ChrisStorm
 }
 
-const formSubmiter9000 = function(ev) {
-  ev.preventDefault()
-  const f = ev.target
-  listOtron57(f);
-  chrisCountOMatic(f);
-   f.reset()
+const renderItem = function(flick) {
+  const item = document.createElement('li')
+  item.classList.add('flick')
+
+  // get the list of properties
+  const properties = Object.keys(flick)
+
+  // loop over the properties
+  properties.forEach(function(propertyName) {
+    // build a span, and append it to the list
+    const span = renderProperty(propertyName, flick[propertyName])
+    item.appendChild(span)
+  })
+
+  return item
 }
 
-form.addEventListener('submit', formSubmiter9000)
+const renderProperty = function(name, value) {
+  const span = document.createElement('span')
+  span.classList.add(name)
+  span.textContent = value
+  return span
+}
+
+const handleSubmit = function(ev) {
+  ev.preventDefault()
+  const f = ev.target
+
+  const flick = {
+    name: f.flickName.value,
+    count: f.ChrisCount.value,
+  }
+
+  const item = renderItem(flick)
+
+  const list = document.querySelector('#flicks')
+  list.appendChild(item)
+
+  chrisCountOMatic(f)
+  
+  f.reset()
+}
+
+form.addEventListener('submit', handleSubmit)
