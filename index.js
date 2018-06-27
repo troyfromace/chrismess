@@ -6,6 +6,7 @@ function listOtron57(f) {
   const flickName=f.flickName.value
   const list = document.querySelector('#flicks')
   let item=document.createElement('li')
+  item.classList.add('flick');
   item.textContent=flickName
   list.appendChild(item)
 }
