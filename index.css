@@ -26,7 +26,8 @@ input:focus {
 
 
 .count{
-    display: block;  
+    display: block;
+    size: 200%;  
 }
 
 
@@ -46,11 +47,11 @@ h1{
 }
 
 .SUPERLOVE{
-    border: 2px solid rgb(146, 9, 116);
-    background-color: rgb(146, 9, 116);
+    border: 2px solid #ff00ff;
+    background-color: #ff00ff;
     border-radius: 4px;
     font-family: 'Spirax', cursive;
-    font-size: 150%;
+    font-size: 180%;
     color: whitesmoke;
 }
 
