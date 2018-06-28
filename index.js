@@ -1,9 +1,10 @@
 var ChrisStorm=0;
-const filmArray=[];
+var filmArray=[];
 var chopArray=[];
 var listCount=0;
 class App{
   constructor() {
+this.load()
     const form = document.querySelector('form#flickForm')
     form.addEventListener('submit', (ev)=>{
       ev.preventDefault()
@@ -17,7 +18,6 @@ class App{
           ev.preventDefault()
          const d= ev.target
         console.log(d.getAttribute('class'))
-        debugger
         let deleteClass=''
         if(d.getAttribute('class')===null)
         { 
@@ -26,7 +26,6 @@ class App{
         else{
         deleteClass=d.getAttribute('class')
         }
-        debugger
         deleteClass=deleteClass.slice(7)
         deleteClass='.'+deleteClass
         let chopNumber=deleteClass.slice(7)
@@ -38,6 +37,7 @@ class App{
         const list=document.querySelector('#flicks')
         list.removeChild(deleteItem)
         this.chrisCountOMatic(ChrisStorm)
+        this.sendToStorage(filmArray)
 
       })
       }
@@ -68,6 +68,8 @@ class App{
         let abc=chopArray.lastIndexOf(faveArraySpot)
         filmArray[abc].fave= !filmArray[abc].fave
         console.log(filmArray)
+        this.sendToStorage(filmArray)
+
       })
       }
 
@@ -159,10 +161,22 @@ handleSubmit(ev,ChrisStorm) {
   list.appendChild(item)
 
   this.chrisCountOMatic(ChrisStorm)
-
+  this.sendToStorage(filmArray)
   f.reset()
 }
 
+sendToStorage(filmArray){
+const stringyArray= JSON.stringify(filmArray)
+console.log(stringyArray)
+localStorage.setItem('stringyArray', stringyArray);
+
 }
+
+load(){
+ const flicks=JSON.parse(localStorage.getItem('stringyArray')) 
+ filmArray=flicks || []
+}
+}
+
 
 const app = new App()
