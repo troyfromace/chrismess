@@ -1,10 +1,6 @@
-///NEED TO CLEAN UP RENDER ITEM AND BUTTON GENERATORS
-//ALSO WANT TO STYLE THIS PUPPER UP LIKE WESTMINSTER
-//PUT IN COMMENTS FOR READABILITY
 class App{
   constructor() {
     this.list=document.querySelector('#flicks')
-
     this.filmArray = []
     this.load()
 
@@ -26,21 +22,18 @@ class App{
         flicks.forEach(flick => this.addFlick(flick))
         this.chrisCountOMatic()
       }
-     }
+    }
 
 chrisCountOMatic(){
   var ChrisStorm=0;
-  this.filmArray.forEach(function(flick){
-ChrisStorm+=Number(flick.count)
-  })
+  this.filmArray.forEach(function(flick){ ChrisStorm+=Number(flick.count) })
   document.querySelector('#ChrisCountDisplay').textContent="CHRIS COUNT :  "+ChrisStorm
 }
 
 renderProperty(name, value) {
   const span = document.createElement('span')
   if(name==='fave') {}
-  else{
-  
+  else{ 
   span.classList.add(name)
   span.textContent = value
   }
@@ -60,17 +53,11 @@ renderItem(flick) {
     const span = this.renderProperty(propertyName, flick[propertyName])
     item.appendChild(span)
   })
-/////////////////////
-  const deleteButton=this.deleteButtonGenerator(flick,item)
-  item.appendChild(deleteButton)
 
-  /////////////////////
-  const faveButton=this.faveButtonGenerator(flick,item)
-  item.appendChild(faveButton)
+  item.appendChild(this.deleteButtonGenerator(flick,item))
+  item.appendChild(this.faveButtonGenerator(flick,item))
   const list=document.querySelector('#flicks')
-       
-
-     
+            
   return item
 }
 
@@ -78,30 +65,23 @@ faveButtonGenerator(flick,item){
   const Button=document.createElement('button')
   Button.innerHTML='<i class="fas fa-grin-hearts"></i>'
   Button.classList.add('fave')
-
   Button.addEventListener('click', (ev)=>{
     this.toggleFavorite(flick, item)
-})
+    })
   return Button
 }
 
 toggleFavorite(flick, item) {
-  // update both the UI and the array
   flick.fave = item.classList.toggle('SUPERLOVE')
-
-  // update localStorage
   this.save()
 }
 
 deleteButtonGenerator(flick, item){
   const button=document.createElement('button')
   button.classList.add('delete')
-  button.innerHTML='<i class="far fa-trash-alt"></i>'
-        
+  button.innerHTML='<i class="far fa-trash-alt"></i>' 
         button.addEventListener('click', (ev)=>{
-          
           this.removeFlick(flick, item)
-
       })
   return button
 }
@@ -140,7 +120,6 @@ handleSubmit(ev) {
   f.reset()
   f.flickName.focus()
 }
-
 
  addFlick(flick){
 this.filmArray.push(flick)
