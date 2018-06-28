@@ -28,6 +28,8 @@ class App{
         const deleteItem=document.querySelector(deleteClass)
         const list=document.querySelector('#flicks')
         list.removeChild(deleteItem)
+        this.chrisCountOMatic(ChrisStorm)
+
       })
       }
 
@@ -44,6 +46,7 @@ class App{
         faveClass='.'+faveClass
         const faveItem=document.querySelector(faveClass)
         faveItem.classList.add("SUPERLOVE")
+        faveButton.textContent='Loved It!'
 
         let faveArraySpot=faveClass.slice(5)
         faveArraySpot=Number(faveArraySpot)
@@ -58,10 +61,12 @@ class App{
   }
 
 
-chrisCountOMatic(f,ChrisStorm){
-  ChrisStorm += Number(f.ChrisCount.value)
+chrisCountOMatic(ChrisStorm){
+ 
+  filmArray.forEach(function(flick){
+ChrisStorm+=Number(flick.count)
+  })
   document.querySelector('#ChrisCountDisplay').textContent="CHRIS COUNT :  "+ChrisStorm
-  return ChrisStorm
 }
 
 renderProperty(name, value) {
@@ -118,7 +123,7 @@ handleSubmit(ev,ChrisStorm) {
   const list = document.querySelector('#flicks')
   list.appendChild(item)
 
-  this.chrisCountOMatic(f,ChrisStorm)
+  this.chrisCountOMatic(ChrisStorm)
 
   f.reset()
 }
