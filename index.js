@@ -33,9 +33,9 @@ class App{
       })
       }
 
-
       if(listCount===0){}
       else {
+        const list=document.querySelector('#flicks')
         const faveButton=document.querySelector(`button.fave${listCount}`)
         faveButton.addEventListener('click', (ev)=>{
           ev.preventDefault()
@@ -47,12 +47,12 @@ class App{
         const faveItem=document.querySelector(faveClass)
         faveItem.classList.add("SUPERLOVE")
         faveButton.textContent='Loved It!'
-
         let faveArraySpot=faveClass.slice(5)
         faveArraySpot=Number(faveArraySpot)
         let abc=chopArray.lastIndexOf(faveArraySpot)
         filmArray[abc].fave="LOVE IT"
         console.log(filmArray)
+        faveItem.removeChild(faveButton)
       })
       }
 
@@ -115,6 +115,12 @@ handleSubmit(ev,ChrisStorm) {
     name: f.flickName.value,
     count: f.ChrisCount.value,
     fave: '',
+  }
+
+  if(listCount>=3)
+  {
+    debugger
+    document.querySelector('html').classList.add('fantasticFour')
   }
   filmArray.push(flick);
   console.log(filmArray);
