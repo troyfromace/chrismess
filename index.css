@@ -62,3 +62,63 @@ h1{
     text-shadow: 1px 1px 2px rgba(247, 247, 247, 0.8);
 
 }
+
+
+button.delete {
+    font-size: 125%;
+    background-color: #cc3344;
+    color: white;
+  }
+  button.delete:hover {
+    background-color: #ee3344;
+  }
+
+button[type="submit"] {
+    background-color: #44aa33;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    height: auto;
+    align-self: stretch;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: inherit;
+    padding: 0 1em;
+    border: 1px solid transparent;
+    transition: background-color .25s ease-out,color .25s ease-out;
+    font-size: .9rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #44bb33;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+  }
+
+  button.fave {
+    font-size: 125%;
+    background-color: #bb06a3;
+    color: whitesmoke;
+  }
+  button.fave:hover {
+      
+    background-color: #ff00ff;
+    color: whitesmoke;
+  }
+
+  button {
+    border: 0;
+    padding: 0.75rem 0.8rem;
+    transition: background-color .25s ease-out, transform .1s ease-out;
+    cursor: pointer;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+  }
