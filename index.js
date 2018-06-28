@@ -17,7 +17,16 @@ class App{
           ev.preventDefault()
          const d= ev.target
         console.log(d.getAttribute('class'))
-        let deleteClass=d.getAttribute('class')
+        debugger
+        let deleteClass=''
+        if(d.getAttribute('class')===null)
+        { 
+          deleteClass=d.parentElement.parentElement.getAttribute('class')
+        }
+        else{
+        deleteClass=d.getAttribute('class')
+        }
+        debugger
         deleteClass=deleteClass.slice(7)
         deleteClass='.'+deleteClass
         let chopNumber=deleteClass.slice(7)
@@ -41,7 +50,14 @@ class App{
           ev.preventDefault()
          const l= ev.target
         console.log(l.getAttribute('class'))
-        let faveClass=l.getAttribute('class')
+        let faveClass=''
+        if(l.getAttribute('class')===null)
+        { 
+          faveClass=l.parentElement.parentElement.getAttribute('class')
+        }
+        else{
+        faveClass=l.getAttribute('class')
+        }
         faveClass=faveClass.slice(5)
         faveClass='.'+faveClass
         const faveItem=document.querySelector(faveClass)
@@ -106,17 +122,17 @@ renderItem(flick) {
 
 faveButtonGenerator(flick){
   const faveButton=document.createElement('button')
+  faveButton.innerHTML='<i class="fas fa-grin-hearts"></i>'
   faveButton.classList.add('fave')
   faveButton.classList.add(`fave${listCount}`)
-  faveButton.textContent=`<3 ${flick.name}`
   return faveButton
 }
 
 deleteButtonGenerator(flick){
   const button=document.createElement('button')
   button.classList.add('delete')
+  button.innerHTML='<i class="far fa-trash-alt"></i>'
   button.classList.add(`delete${++listCount}`)
-  button.textContent=`DELETE ${flick.name}`
   chopArray.push(listCount)
   return button
 }
