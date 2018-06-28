@@ -1,4 +1,6 @@
-
+///NEED TO CLEAN UP RENDER ITEM AND BUTTON GENERATORS
+//ALSO WANT TO STYLE THIS PUPPER UP LIKE WESTMINSTER
+//PUT IN COMMENTS FOR READABILITY
 var chopArray=[];
 var listCount=0;
 class App{
@@ -19,7 +21,7 @@ class App{
     localStorage.setItem('stringyArray', JSON.stringify(this.filmArray));
     }
 
-    load(){
+  load(){
       const flicks=JSON.parse(localStorage.getItem('stringyArray')) 
       
       if(flicks){
@@ -66,7 +68,7 @@ renderItem(flick) {
   item.classList.add(`delete${listCount}`)
 
   /////////////////////
-  const faveButton=this.faveButtonGenerator(flick)
+  const faveButton=this.faveButtonGenerator(flick,item)
   item.classList.add(`fave${listCount}`)
   item.appendChild(faveButton)
   const list=document.querySelector('#flicks')
@@ -76,35 +78,23 @@ renderItem(flick) {
   return item
 }
 
-faveButtonGenerator(flick){
+faveButtonGenerator(flick,item){
   const Button=document.createElement('button')
   Button.innerHTML='<i class="fas fa-grin-hearts"></i>'
   Button.classList.add('fave')
-  Button.classList.add(`fave${listCount}`)
+
   Button.addEventListener('click', (ev)=>{
-    ev.preventDefault()
-   const l= ev.target
-  console.log(l.getAttribute('class'))
-  let faveClass=''
-  if(l.getAttribute('class')===null)
-  { 
-    faveClass=l.parentElement.parentElement.getAttribute('class')
-  }
-  else{
-  faveClass=l.getAttribute('class')
-  }
-  faveClass=faveClass.slice(5)
-  faveClass='.'+faveClass
-  const faveItem=document.querySelector(faveClass)
-  faveItem.classList.toggle("SUPERLOVE")
-  Button.textContent='Maybe Not :('
-  let faveArraySpot=faveClass.slice(5)
-  faveArraySpot=Number(faveArraySpot)
-  let abc=chopArray.lastIndexOf(faveArraySpot)
-  this.filmArray[abc].fave= !(this.filmArray[abc].fave)
-  this.save(this.filmArray)
+    this.toggleFavorite(flick, item)
 })
   return Button
+}
+
+toggleFavorite(flick, item) {
+  // update both the UI and the array
+  flick.fave = item.classList.toggle('SUPERLOVE')
+
+  // update localStorage
+  this.save()
 }
 
 deleteButtonGenerator(flick, item){
@@ -113,7 +103,6 @@ deleteButtonGenerator(flick, item){
   button.innerHTML='<i class="far fa-trash-alt"></i>'
   button.classList.add(`delete${++listCount}`)
   chopArray.push(listCount)
-  debugger
         
         button.addEventListener('click', (ev)=>{
           
@@ -128,7 +117,6 @@ removeFlick(flick, item) {
   this.list.removeChild(item)
 
   // remove from the array
-  debugger
   const i = this.filmArray.indexOf(flick)
   this.filmArray.splice(i, 1)
   this.chrisCountOMatic()
@@ -160,9 +148,6 @@ handleSubmit(ev) {
 }
 
 
-
-
-
  addFlick(flick){
 this.filmArray.push(flick)
 const item = this.renderItem(flick)
@@ -171,12 +156,9 @@ const item = this.renderItem(flick)
     if (flick.fave) {
       item.classList.add('SUPERLOVE')
     }
-debugger
     // add it to the DOM
     this.list.appendChild(item)
   }
 }
-
-
 
 const app = new App()
