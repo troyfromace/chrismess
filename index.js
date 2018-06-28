@@ -45,14 +45,13 @@ class App{
         faveClass=faveClass.slice(5)
         faveClass='.'+faveClass
         const faveItem=document.querySelector(faveClass)
-        faveItem.classList.add("SUPERLOVE")
-        faveButton.textContent='Loved It!'
+        faveItem.classList.toggle("SUPERLOVE")
+        faveButton.textContent='Maybe Not :('
         let faveArraySpot=faveClass.slice(5)
         faveArraySpot=Number(faveArraySpot)
         let abc=chopArray.lastIndexOf(faveArraySpot)
-        filmArray[abc].fave="LOVE IT"
+        filmArray[abc].fave= !filmArray[abc].fave
         console.log(filmArray)
-        faveItem.removeChild(faveButton)
       })
       }
 
@@ -71,8 +70,12 @@ ChrisStorm+=Number(flick.count)
 
 renderProperty(name, value) {
   const span = document.createElement('span')
+  if(name==='fave') {}
+  else{
+  
   span.classList.add(name)
   span.textContent = value
+  }
   return span
 }
 
@@ -114,7 +117,7 @@ handleSubmit(ev,ChrisStorm) {
   const flick = {
     name: f.flickName.value,
     count: f.ChrisCount.value,
-    fave: '',
+    fave: false,
   }
 
   if(listCount>=3)
