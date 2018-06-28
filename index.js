@@ -1,8 +1,6 @@
 ///NEED TO CLEAN UP RENDER ITEM AND BUTTON GENERATORS
 //ALSO WANT TO STYLE THIS PUPPER UP LIKE WESTMINSTER
 //PUT IN COMMENTS FOR READABILITY
-var chopArray=[];
-var listCount=0;
 class App{
   constructor() {
     this.list=document.querySelector('#flicks')
@@ -65,11 +63,9 @@ renderItem(flick) {
 /////////////////////
   const deleteButton=this.deleteButtonGenerator(flick,item)
   item.appendChild(deleteButton)
-  item.classList.add(`delete${listCount}`)
 
   /////////////////////
   const faveButton=this.faveButtonGenerator(flick,item)
-  item.classList.add(`fave${listCount}`)
   item.appendChild(faveButton)
   const list=document.querySelector('#flicks')
        
@@ -101,8 +97,6 @@ deleteButtonGenerator(flick, item){
   const button=document.createElement('button')
   button.classList.add('delete')
   button.innerHTML='<i class="far fa-trash-alt"></i>'
-  button.classList.add(`delete${++listCount}`)
-  chopArray.push(listCount)
         
         button.addEventListener('click', (ev)=>{
           
@@ -133,7 +127,7 @@ handleSubmit(ev) {
     fave: false,
   }
 
-  if(listCount>=3)
+  if(this.filmArray.length>=3)
   {
     document.querySelector('html').classList.add('fantasticFour')
   }
