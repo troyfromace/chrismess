@@ -93,21 +93,32 @@ renderItem(flick) {
     item.appendChild(span)
   })
 /////////////////////
-  const button=document.createElement('button')
-  button.classList.add('delete')
-  button.classList.add(`delete${++listCount}`)
-  button.textContent=`DELETE ${flick.name}`
-  item.appendChild(button)
+  const deleteButton=this.deleteButtonGenerator(flick)
+  item.appendChild(deleteButton)
   item.classList.add(`delete${listCount}`)
-  chopArray.push(listCount)
+
   /////////////////////
+  const faveButton=this.faveButtonGenerator(flick)
+  item.classList.add(`fave${listCount}`)
+  item.appendChild(faveButton)
+  return item
+}
+
+faveButtonGenerator(flick){
   const faveButton=document.createElement('button')
   faveButton.classList.add('fave')
   faveButton.classList.add(`fave${listCount}`)
   faveButton.textContent=`<3 ${flick.name}`
-  item.classList.add(`fave${listCount}`)
-  item.appendChild(faveButton)
-  return item
+  return faveButton
+}
+
+deleteButtonGenerator(flick){
+  const button=document.createElement('button')
+  button.classList.add('delete')
+  button.classList.add(`delete${++listCount}`)
+  button.textContent=`DELETE ${flick.name}`
+  chopArray.push(listCount)
+  return button
 }
 
 
@@ -122,7 +133,6 @@ handleSubmit(ev,ChrisStorm) {
 
   if(listCount>=3)
   {
-    debugger
     document.querySelector('html').classList.add('fantasticFour')
   }
   filmArray.push(flick);
