@@ -37,19 +37,18 @@ class App{
     }
 
 chrisCountOMatic(){
-  var ChrisStorm=0;
+  let ChrisStorm=0;
+  if(this.filmArray.length===0)
+    this.ChrisStormNextLevel=0
 debugger
   if(this.ChrisStormNextLevel===2){
-    if(this.filmArray[0]===null)
-    this.ChrisStormNextLevel=0
-
+    
     ChrisStorm=Number(this.filmArray[0].count)
 
-    for(var i=1; i<this.filmArray.length; i++)
+    for(let i=1; i<this.filmArray.length; i++)
     {
       ChrisStorm=Math.pow(ChrisStorm,Number(this.filmArray[i].count))
     }
-
   }
  
   if(this.ChrisStormNextLevel===1){
