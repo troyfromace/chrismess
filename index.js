@@ -1,14 +1,26 @@
+///Add Chris Storm Ultra Typhoon
 class App{
   constructor() {
+    this.ChrisStormNextLevel=0
     this.list=document.querySelector('#flicks')
     this.filmArray = []
     this.load()
+
+    
+      const typhoon = document.querySelector('button.typhoon')
+      typhoon.addEventListener('click', (ev)=>{
+        ev.preventDefault()
+        this.ChrisStormNextLevel=(this.ChrisStormNextLevel+1)%3
+        this.chrisCountOMatic()
+        })
 
     const form = document.querySelector('form#flickForm')
     form.addEventListener('submit', (ev)=>{
       ev.preventDefault()
       this.handleSubmit(ev)
       })
+
+      
   }
 
   save(){
@@ -26,7 +38,30 @@ class App{
 
 chrisCountOMatic(){
   var ChrisStorm=0;
-  this.filmArray.forEach(function(flick){ ChrisStorm+=Number(flick.count) })
+debugger
+  if(this.ChrisStormNextLevel===2){
+    if(this.filmArray[0]===null)
+    this.ChrisStormNextLevel=0
+
+    ChrisStorm=Number(this.filmArray[0].count)
+
+    for(var i=1; i<this.filmArray.length; i++)
+    {
+      ChrisStorm=Math.pow(ChrisStorm,Number(this.filmArray[i].count))
+    }
+
+  }
+ 
+  if(this.ChrisStormNextLevel===1){
+    ChrisStorm=1
+    this.filmArray.forEach(function(flick){ ChrisStorm*=Number(flick.count) }) 
+  }
+  
+  if(this.ChrisStormNextLevel===0){
+  this.filmArray.forEach(function(flick){ ChrisStorm+=Number(flick.count) }) 
+  }
+
+
   document.querySelector('#ChrisCountDisplay').textContent="CHRIS COUNT :  "+ChrisStorm
 }
 
