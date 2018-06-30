@@ -122,3 +122,28 @@ button[type="submit"] {
   button:hover {
     transform: scale(1.1);
   }
+
+  button.super{
+    transform: scale(1.2);
+    background-color: rgb(69, 70, 66)
+
+  }
+
+  html.ULTRA{
+      background-color: rgb(69, 70, 66);
+      color: rgb(240, 240, 35);
+      font-size: 89%;
+      transform: scale(.92);
+  }
+
+  button.ULTRA{
+      size: 2%;
+      width: 10%;
+      padding:0;
+      background-color: rgb(240, 240, 35);
+      color: rgb(69, 70, 66);
+  }
+
+  #ChrisCountDisplay.ULTRA{
+      font-size: 275%
+  }

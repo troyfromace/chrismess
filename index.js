@@ -2,13 +2,14 @@
 class App{
   constructor() {
     this.ChrisStormNextLevel=0
+    this.typhoon = document.querySelector('button.typhoon')
     this.list=document.querySelector('#flicks')
     this.filmArray = []
     this.load()
 
     
-      const typhoon = document.querySelector('button.typhoon')
-      typhoon.addEventListener('click', (ev)=>{
+     const TYPHOON = document.querySelector('button.typhoon')
+     TYPHOON.addEventListener('click', (ev)=>{
         ev.preventDefault()
         this.ChrisStormNextLevel=(this.ChrisStormNextLevel+1)%3
         this.chrisCountOMatic()
@@ -36,13 +37,44 @@ class App{
       }
     }
 
+chrisStormClassEditor(numb){
+  const kitandkaboodle=document.querySelector('html')
+  const text=document.querySelector('#ChrisCountDisplay')
+  if(numb===0)
+  {
+    kitandkaboodle.classList.remove('ULTRA')
+    text.classList.remove('ULTRA')
+  this.typhoon.classList.remove('ULTRA')
+    this.typhoon.classList.remove('super')
+    this.typhoon.classList.add('lame')
+  }
+  if(numb===1)
+  {
+    text.classList.remove('ULTRA')
+    kitandkaboodle.classList.remove('ULTRA')
+  this.typhoon.classList.remove('ULTRA')
+    this.typhoon.classList.add('super')
+    this.typhoon.classList.remove('lame')
+  }
+  if(numb===2)
+  {
+    kitandkaboodle.classList.add('ULTRA')
+    text.classList.add('ULTRA')
+
+  this.typhoon.classList.add('ULTRA')
+    this.typhoon.classList.remove('super')
+    this.typhoon.classList.remove('lame')
+  }
+}
+
 chrisCountOMatic(){
   let ChrisStorm=0;
   if(this.filmArray.length===0)
     this.ChrisStormNextLevel=0
-debugger
+
   if(this.ChrisStormNextLevel===2){
-    
+    this.typhoon.textContent='calm the storm'
+    this.chrisStormClassEditor(this.ChrisStormNextLevel)
     ChrisStorm=Number(this.filmArray[0].count)
 
     for(let i=1; i<this.filmArray.length; i++)
@@ -53,10 +85,18 @@ debugger
  
   if(this.ChrisStormNextLevel===1){
     ChrisStorm=1
+    this.chrisStormClassEditor(this.ChrisStormNextLevel)
+
+    this.typhoon.textContent='ULTRA CHRIS TYPHOON'
+    
+
     this.filmArray.forEach(function(flick){ ChrisStorm*=Number(flick.count) }) 
   }
   
   if(this.ChrisStormNextLevel===0){
+    this.typhoon.textContent='SUPER CHRIS STORM'
+    this.chrisStormClassEditor(this.ChrisStormNextLevel)
+
   this.filmArray.forEach(function(flick){ ChrisStorm+=Number(flick.count) }) 
   }
 
